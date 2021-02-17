@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/mnt/c/wsl$/Ubuntu/home/kirkwatson/code/21s-pa01-watson/main.cpp
+iostream
+-
+CImg.h
+/mnt/c/wsl$/Ubuntu/home/kirkwatson/code/21s-pa01-watson/CImg.h
+string
+-
+
