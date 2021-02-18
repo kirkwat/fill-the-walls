@@ -6,11 +6,17 @@
 
 #IncludeRegexTransform: 
 
-/mnt/c/wsl$/Ubuntu/home/kirkwatson/code/21s-pa01-watson/main.cpp
+/mnt/c/wsl$/Ubuntu/home/kirkwatson/code/21s-pa01-watson/WallFiller.cpp
+WallFiller.h
+/mnt/c/wsl$/Ubuntu/home/kirkwatson/code/21s-pa01-watson/WallFiller.h
+
+/mnt/c/wsl$/Ubuntu/home/kirkwatson/code/21s-pa01-watson/WallFiller.h
+string
+-
 iostream
 -
-CImg.h
-/mnt/c/wsl$/Ubuntu/home/kirkwatson/code/21s-pa01-watson/CImg.h
-string
+fstream
+-
+dirent.h
 -
 

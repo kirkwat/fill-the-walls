@@ -3,7 +3,7 @@ project(21s_pa01_watson)
 set(CMAKE_CXX_STANDARD 17)
 
 set(CIMG_Path ${PROJECT_SOURCE_DIR} CImg.h) # Set your CIMG_Path to where you extracted CIMG
-add_executable(${PROJECT_NAME} main.cpp)
+add_executable(${PROJECT_NAME} main.cpp WallFiller.cpp WallFiller.h)
 # ADDING COOL IMAGE
 target_include_directories(${PROJECT_NAME} PRIVATE ${CIMG_Path})
 # ADDING THREADS fixes pthread_lock

@@ -123,6 +123,33 @@ depend:
 	$(MAKE) -f CMakeFiles/21s_pa01_watson.dir/build.make CMakeFiles/21s_pa01_watson.dir/build
 .PHONY : 21s_pa01_watson/fast
 
+WallFiller.o: WallFiller.cpp.o
+
+.PHONY : WallFiller.o
+
+# target to build an object file
+WallFiller.cpp.o:
+	$(MAKE) -f CMakeFiles/21s_pa01_watson.dir/build.make CMakeFiles/21s_pa01_watson.dir/WallFiller.cpp.o
+.PHONY : WallFiller.cpp.o
+
+WallFiller.i: WallFiller.cpp.i
+
+.PHONY : WallFiller.i
+
+# target to preprocess a source file
+WallFiller.cpp.i:
+	$(MAKE) -f CMakeFiles/21s_pa01_watson.dir/build.make CMakeFiles/21s_pa01_watson.dir/WallFiller.cpp.i
+.PHONY : WallFiller.cpp.i
+
+WallFiller.s: WallFiller.cpp.s
+
+.PHONY : WallFiller.s
+
+# target to generate assembly for a file
+WallFiller.cpp.s:
+	$(MAKE) -f CMakeFiles/21s_pa01_watson.dir/build.make CMakeFiles/21s_pa01_watson.dir/WallFiller.cpp.s
+.PHONY : WallFiller.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -159,6 +186,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... 21s_pa01_watson"
+	@echo "... WallFiller.o"
+	@echo "... WallFiller.i"
+	@echo "... WallFiller.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
