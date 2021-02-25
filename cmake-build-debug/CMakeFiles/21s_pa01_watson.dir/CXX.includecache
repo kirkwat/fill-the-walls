@@ -6,17 +6,15 @@
 
 #IncludeRegexTransform: 
 
-/mnt/c/wsl$/Ubuntu/home/kirkwatson/code/21s-pa01-watson/WallFiller.cpp
-WallFiller.h
-/mnt/c/wsl$/Ubuntu/home/kirkwatson/code/21s-pa01-watson/WallFiller.h
+/mnt/c/wsl$/Ubuntu/home/kirkwatson/code/21s-pa01-watson/Stats.cpp
+Stats.h
+/mnt/c/wsl$/Ubuntu/home/kirkwatson/code/21s-pa01-watson/Stats.h
 
-/mnt/c/wsl$/Ubuntu/home/kirkwatson/code/21s-pa01-watson/WallFiller.h
+/mnt/c/wsl$/Ubuntu/home/kirkwatson/code/21s-pa01-watson/Stats.h
 string
--
-iostream
 -
 fstream
 -
-dirent.h
+iomanip
 -
 

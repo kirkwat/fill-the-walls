@@ -10,17 +10,34 @@ using namespace cimg_library;
 int main(int argc, char** argv) {
     //create wall filler
     WallFiller filler1=WallFiller(argv[1]);
+
+
+    //test wall
+    //filler1.fillWall(1000,1000,1);
+    //test stats
+    filler1.outputStats();
+
+
+    //TO DO PLAN
+    //finish outline
+        //finish stats
+        //have everything set up so only the actual image creation is all you need
+    //start algorithms
+
+
+
+    /*
     //fill wall 1 with 3 algorithms
     cout<<"Filling Wall 1..."<<endl;
-    filler1.fillWall(stoi(argv[2]),stoi(argv[3]));
+    filler1.fillWall(stoi(argv[2]),stoi(argv[3]),1);
     cout<<"...Complete"<<endl<<endl;
     //wall 2 with 3 algorithms
     cout<<"Filling Wall 2..."<<endl;
-    filler1.fillWall(stoi(argv[4]),stoi(argv[5]));
+    filler1.fillWall(stoi(argv[4]),stoi(argv[5]),2);
     cout<<"...Complete"<<endl;
-    //output algorithm stats with wall 1 and wall 2
+     //output algorithm stats with wall 1 and wall 2
     filler1.outputStats();
-
+     */
 
 
 
@@ -89,3 +106,8 @@ int main(int argc, char** argv) {
         //wall 1 % wasted space
         //wall 2 % wasted space
         //total profit?
+
+
+//TO DO fix
+    //absolute path
+        //does it need to be in ubuntu files

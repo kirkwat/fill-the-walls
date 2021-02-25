@@ -1,1 +1,28 @@
-HELLO1
+Fill the Walls Data
+Smallest first
+	Wall 1:
+		Total value:   $1000.00
+		Wasted Space:  30.00%
+	Wall 2:
+		Total value:   $3000.00
+		Wasted Space:  35.00%
+Total profit: $4000.00
+
+Most expensive first
+	Wall 1:
+		Total value:   $1500.00
+		Wasted Space:  25.00%
+	Wall 2:
+		Total value:   $5000.00
+		Wasted Space:  15.00%
+Total profit: $6500.00
+
+My developed heuristic algorithm
+	Wall 1:
+		Total value:   $2000.00
+		Wasted Space:  27.00%
+	Wall 2:
+		Total value:   $2500.00
+		Wasted Space:  45.00%
+Total profit: $4500.00
+

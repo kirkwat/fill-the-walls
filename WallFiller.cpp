@@ -4,27 +4,33 @@
 #include "WallFiller.h"
 //default constructor
 WallFiller::WallFiller(){
+    imgCreator=FillerAlgos();
     filePath="NULL";
-    width=-1;
-    height=-1;
 }
 //overloaded constructor with image folder path
 WallFiller::WallFiller(string path) {
+    imgCreator=FillerAlgos();
     filePath=path;
-    width=-1;
-    height=-1;
     cout<<endl<<"File Path: "<<filePath<<endl;
 }
-
-void WallFiller::fillWall(int w, int h){
-    width=w;
-    height=h;
-    cout<<"\tWall Width: "<<width<<endl;
-    cout<<"\tWall Height: "<<height<<endl;
+//create walls with the three different algos
+void WallFiller::fillWall(int w, int h, int wallNum){
+    //create image with smallest first and store data
+    Stats temp=imgCreator.smallest(w,h);
+    temp.setWallNum(wallNum);
+    images.push_back(temp);
+    //create image with most expensive first and store data
+    temp=imgCreator.mostExpensive(w,h);
+    temp.setWallNum(wallNum);
+    images.push_back(temp);
+    //create image with my algo and store data
+    temp=imgCreator.myHeuristicAlgo(w,h);
+    temp.setWallNum(wallNum);
+    images.push_back(temp);
 }
-
+//output stats for walls and algorithms
 void WallFiller::outputStats(){
-    cout<<endl<<"Saving algorithm and wall to stats.txt..."<<endl;
+    cout<<endl<<"Saving algorithm and wall data to stats.txt..."<<endl;
     //open file
     ofstream file("stats.txt");
     //check if it was opened properly
@@ -32,9 +38,32 @@ void WallFiller::outputStats(){
         cout << "Could not open file stats.txt." << endl;
         return;
     }
-    //TODO OUTPUT STATS
-    //create class that stores info
-    file<<"Hello World"<<endl;
+    file<<"Fill the Walls Data"<<endl;
+    //display stats for each algorithm
+    for(int x=1;x<=3;x++){
+        if(x==1){
+            file<<"Smallest first"<<endl;
+        }
+        else if(x==2){
+            file<<"Most expensive first"<<endl;
+        }
+        else{
+            file<<"My developed heuristic algorithm"<<endl;
+        }
+        //print info for each image
+        double total=0;
+        for(int y=0;y<images.size();y++){
+            //print correct image with algo type
+            if(x==images[y].getAlgoType()){
+                images[y].printStats(file);
+                total+=images[y].getValue();
+            }
+        }
+        //set precision for total
+        file<<fixed;
+        file<<setprecision(2);
+        file<<"Total profit: $"<<total<<endl<<endl;
+    }
     //close file
     file.close();
     cout<<"...Complete"<<endl;

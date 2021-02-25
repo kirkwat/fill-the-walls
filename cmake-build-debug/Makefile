@@ -123,6 +123,60 @@ depend:
 	$(MAKE) -f CMakeFiles/21s_pa01_watson.dir/build.make CMakeFiles/21s_pa01_watson.dir/build
 .PHONY : 21s_pa01_watson/fast
 
+FillerAlgos.o: FillerAlgos.cpp.o
+
+.PHONY : FillerAlgos.o
+
+# target to build an object file
+FillerAlgos.cpp.o:
+	$(MAKE) -f CMakeFiles/21s_pa01_watson.dir/build.make CMakeFiles/21s_pa01_watson.dir/FillerAlgos.cpp.o
+.PHONY : FillerAlgos.cpp.o
+
+FillerAlgos.i: FillerAlgos.cpp.i
+
+.PHONY : FillerAlgos.i
+
+# target to preprocess a source file
+FillerAlgos.cpp.i:
+	$(MAKE) -f CMakeFiles/21s_pa01_watson.dir/build.make CMakeFiles/21s_pa01_watson.dir/FillerAlgos.cpp.i
+.PHONY : FillerAlgos.cpp.i
+
+FillerAlgos.s: FillerAlgos.cpp.s
+
+.PHONY : FillerAlgos.s
+
+# target to generate assembly for a file
+FillerAlgos.cpp.s:
+	$(MAKE) -f CMakeFiles/21s_pa01_watson.dir/build.make CMakeFiles/21s_pa01_watson.dir/FillerAlgos.cpp.s
+.PHONY : FillerAlgos.cpp.s
+
+Stats.o: Stats.cpp.o
+
+.PHONY : Stats.o
+
+# target to build an object file
+Stats.cpp.o:
+	$(MAKE) -f CMakeFiles/21s_pa01_watson.dir/build.make CMakeFiles/21s_pa01_watson.dir/Stats.cpp.o
+.PHONY : Stats.cpp.o
+
+Stats.i: Stats.cpp.i
+
+.PHONY : Stats.i
+
+# target to preprocess a source file
+Stats.cpp.i:
+	$(MAKE) -f CMakeFiles/21s_pa01_watson.dir/build.make CMakeFiles/21s_pa01_watson.dir/Stats.cpp.i
+.PHONY : Stats.cpp.i
+
+Stats.s: Stats.cpp.s
+
+.PHONY : Stats.s
+
+# target to generate assembly for a file
+Stats.cpp.s:
+	$(MAKE) -f CMakeFiles/21s_pa01_watson.dir/build.make CMakeFiles/21s_pa01_watson.dir/Stats.cpp.s
+.PHONY : Stats.cpp.s
+
 WallFiller.o: WallFiller.cpp.o
 
 .PHONY : WallFiller.o
@@ -186,6 +240,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... 21s_pa01_watson"
+	@echo "... FillerAlgos.o"
+	@echo "... FillerAlgos.i"
+	@echo "... FillerAlgos.s"
+	@echo "... Stats.o"
+	@echo "... Stats.i"
+	@echo "... Stats.s"
 	@echo "... WallFiller.o"
 	@echo "... WallFiller.i"
 	@echo "... WallFiller.s"
