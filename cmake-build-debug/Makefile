@@ -150,6 +150,33 @@ FillerAlgos.cpp.s:
 	$(MAKE) -f CMakeFiles/21s_pa01_watson.dir/build.make CMakeFiles/21s_pa01_watson.dir/FillerAlgos.cpp.s
 .PHONY : FillerAlgos.cpp.s
 
+Image.o: Image.cpp.o
+
+.PHONY : Image.o
+
+# target to build an object file
+Image.cpp.o:
+	$(MAKE) -f CMakeFiles/21s_pa01_watson.dir/build.make CMakeFiles/21s_pa01_watson.dir/Image.cpp.o
+.PHONY : Image.cpp.o
+
+Image.i: Image.cpp.i
+
+.PHONY : Image.i
+
+# target to preprocess a source file
+Image.cpp.i:
+	$(MAKE) -f CMakeFiles/21s_pa01_watson.dir/build.make CMakeFiles/21s_pa01_watson.dir/Image.cpp.i
+.PHONY : Image.cpp.i
+
+Image.s: Image.cpp.s
+
+.PHONY : Image.s
+
+# target to generate assembly for a file
+Image.cpp.s:
+	$(MAKE) -f CMakeFiles/21s_pa01_watson.dir/build.make CMakeFiles/21s_pa01_watson.dir/Image.cpp.s
+.PHONY : Image.cpp.s
+
 Stats.o: Stats.cpp.o
 
 .PHONY : Stats.o
@@ -243,6 +270,9 @@ help:
 	@echo "... FillerAlgos.o"
 	@echo "... FillerAlgos.i"
 	@echo "... FillerAlgos.s"
+	@echo "... Image.o"
+	@echo "... Image.i"
+	@echo "... Image.s"
 	@echo "... Stats.o"
 	@echo "... Stats.i"
 	@echo "... Stats.s"

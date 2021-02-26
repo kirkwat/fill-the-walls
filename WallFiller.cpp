@@ -5,13 +5,10 @@
 //default constructor
 WallFiller::WallFiller(){
     imgCreator=FillerAlgos();
-    filePath="NULL";
 }
 //overloaded constructor with image folder path
 WallFiller::WallFiller(string path) {
-    imgCreator=FillerAlgos();
-    filePath=path;
-    cout<<endl<<"File Path: "<<filePath<<endl;
+    imgCreator=FillerAlgos(path);
 }
 //create walls with the three different algos
 void WallFiller::fillWall(int w, int h, int wallNum){
@@ -19,6 +16,8 @@ void WallFiller::fillWall(int w, int h, int wallNum){
     Stats temp=imgCreator.smallest(w,h);
     temp.setWallNum(wallNum);
     images.push_back(temp);
+    //TODO uncomment after completing smallest first
+    /*
     //create image with most expensive first and store data
     temp=imgCreator.mostExpensive(w,h);
     temp.setWallNum(wallNum);
@@ -26,7 +25,7 @@ void WallFiller::fillWall(int w, int h, int wallNum){
     //create image with my algo and store data
     temp=imgCreator.myHeuristicAlgo(w,h);
     temp.setWallNum(wallNum);
-    images.push_back(temp);
+    images.push_back(temp);*/
 }
 //output stats for walls and algorithms
 void WallFiller::outputStats(){

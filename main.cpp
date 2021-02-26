@@ -13,7 +13,7 @@ int main(int argc, char** argv) {
 
 
     //test wall
-    //filler1.fillWall(1000,1000,1);
+    filler1.fillWall(1000,1000,1);
     //test stats
     filler1.outputStats();
 

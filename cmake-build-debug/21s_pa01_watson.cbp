@@ -96,6 +96,12 @@
 		<Unit filename="/mnt/c/wsl$/Ubuntu/home/kirkwatson/code/21s-pa01-watson/FillerAlgos.h">
 			<Option target="21s_pa01_watson"/>
 		</Unit>
+		<Unit filename="/mnt/c/wsl$/Ubuntu/home/kirkwatson/code/21s-pa01-watson/Image.cpp">
+			<Option target="21s_pa01_watson"/>
+		</Unit>
+		<Unit filename="/mnt/c/wsl$/Ubuntu/home/kirkwatson/code/21s-pa01-watson/Image.h">
+			<Option target="21s_pa01_watson"/>
+		</Unit>
 		<Unit filename="/mnt/c/wsl$/Ubuntu/home/kirkwatson/code/21s-pa01-watson/Stats.cpp">
 			<Option target="21s_pa01_watson"/>
 		</Unit>

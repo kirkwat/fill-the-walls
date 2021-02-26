@@ -5,35 +5,41 @@
 #include "FillerAlgos.h"
 //default constructor
 FillerAlgos::FillerAlgos(){
-
+    filePath="NULL";
+}
+//overloaded constructor with path
+FillerAlgos::FillerAlgos(string path) {
+    filePath=path;
+    getImages(filePath);
 }
 //create wall with smallest images first
-Stats FillerAlgos::smallest(int,int){
+Stats FillerAlgos::smallest(int w,int h){
     Stats info=Stats();
 
 
+    //CImg<unsigned char> testImg("../program1/program1/400.jpg");
 
-
-
-
-
-    cout<<"Filling Wall "<<counter<<"..."<<endl;
-    cout<<"\tWall Width: "<<w<<endl;
-    cout<<"\tWall Height: "<<h<<endl;
-
-    //C:\Users\watso\Downloads\program1\program1\400.jpg
+    string imgPath=filePath+"/400.jpg";
+    //char* imgPath2=filePath+"/400.jpg";
 
     //open test image
-    CImg<unsigned char> testImg("../program1/program1/400.jpg");
+    CImg<unsigned char> testImg(imgPath.c_str());
     //create blank wall
     CImg<unsigned char> wall;
-    wall= CImg(w,h,1,3);
+    wall=CImg(w,h,1,3);
     //set wall color to black
     wall.fill(0);
+    //put images on wall
+    //TODO organize by smallest, then place on wall
+
+    /*
     //put image on wall
     wall.draw_image(0,0,testImg);
     //display wall
     wall.display("Wall Test");
+    */
+
+
 
     //todo cimg example 2
     /*
@@ -80,4 +86,38 @@ Stats FillerAlgos::myHeuristicAlgo(int,int){
 
 
     return info;
+}
+//read through image directory
+void FillerAlgos::getImages(string path) {
+    DIR *directory;
+    struct dirent *entry;
+    struct stat info;
+    //open directory
+    directory=opendir(path.c_str());
+    //check if directory exists
+    if(!directory){
+        cout<<"Folder not found"<<endl;
+        return;
+    }
+    //read directory
+    while((entry=readdir(directory))!=nullptr){
+        if(entry->d_name[0]!='.'){
+            //get path
+            //TODO confirm path works
+            string imgPath=path+"\\\\"+string(entry->d_name);
+            //check if path is another directory
+            stat(imgPath.c_str(),&info);
+            if(S_ISDIR(info.st_mode)){
+                //open directory
+                getImages((char*)imgPath.c_str());
+                filePath=imgPath;
+            }
+            //read path source if path is file
+            else{
+                images.push_back(Image(imgPath));
+            }
+        }
+    }
+    //close directory
+    closedir(directory);
 }
