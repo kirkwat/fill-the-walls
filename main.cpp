@@ -15,16 +15,9 @@ int main(int argc, char** argv) {
     //test wall
     filler1.fillWall(1000,1000,1);
     //test stats
-    filler1.outputStats();
+    //filler1.outputStats();
 
-
-    //TO DO PLAN
-    //finish outline
-        //finish stats
-        //have everything set up so only the actual image creation is all you need
-    //start algorithms
-
-
+    //TODO change to have the two walls made at the same time with different images
 
     /*
     //fill wall 1 with 3 algorithms

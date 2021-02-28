@@ -1,4 +1,4 @@
-//
+//A
 // Created by watso on 2/26/2021.
 //
 
@@ -6,6 +6,7 @@
 #define INC_21S_PA01_WATSON_IMAGE_H
 
 #include <string>
+#include <sstream>
 #include "CImg.h"
 
 using namespace std;

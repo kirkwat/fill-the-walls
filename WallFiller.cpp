@@ -15,7 +15,7 @@ void WallFiller::fillWall(int w, int h, int wallNum){
     //create image with smallest first and store data
     Stats temp=imgCreator.smallest(w,h);
     temp.setWallNum(wallNum);
-    images.push_back(temp);
+    walls.push_back(temp);
     //TODO uncomment after completing smallest first
     /*
     //create image with most expensive first and store data
@@ -51,11 +51,11 @@ void WallFiller::outputStats(){
         }
         //print info for each image
         double total=0;
-        for(int y=0;y<images.size();y++){
+        for(int y=0;y<walls.size();y++){
             //print correct image with algo type
-            if(x==images[y].getAlgoType()){
-                images[y].printStats(file);
-                total+=images[y].getValue();
+            if(x==walls[y].getAlgoType()){
+                walls[y].printStats(file);
+                total+=walls[y].getValue();
             }
         }
         //set precision for total

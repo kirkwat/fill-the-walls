@@ -25,7 +25,10 @@ void Image::setDimensions() {
 //set price
 void Image::setPrice(){
     string priceStr=path.substr(path.find_last_of('/')+1,path.find_last_of('.')-path.find_last_of('/')-1);
-    price=stod(priceStr);
+    stringstream strToInt(priceStr);
+    int priceInt=0;
+    strToInt>>priceInt;
+    price=double(priceInt);
 }
 //get width
 int Image::getWidth(){

@@ -114,13 +114,37 @@ tinyexr.h
 CImg.h
 /mnt/c/wsl$/Ubuntu/home/kirkwatson/code/21s-pa01-watson/CImg.h
 
-/mnt/c/wsl$/Ubuntu/home/kirkwatson/code/21s-pa01-watson/Image.cpp
+/mnt/c/wsl$/Ubuntu/home/kirkwatson/code/21s-pa01-watson/FillerAlgos.cpp
+FillerAlgos.h
+/mnt/c/wsl$/Ubuntu/home/kirkwatson/code/21s-pa01-watson/FillerAlgos.h
+
+/mnt/c/wsl$/Ubuntu/home/kirkwatson/code/21s-pa01-watson/FillerAlgos.h
+iostream
+-
+vector
+-
+dirent.h
+-
+Stats.h
+/mnt/c/wsl$/Ubuntu/home/kirkwatson/code/21s-pa01-watson/Stats.h
 Image.h
 /mnt/c/wsl$/Ubuntu/home/kirkwatson/code/21s-pa01-watson/Image.h
+CImg.h
+/mnt/c/wsl$/Ubuntu/home/kirkwatson/code/21s-pa01-watson/CImg.h
 
 /mnt/c/wsl$/Ubuntu/home/kirkwatson/code/21s-pa01-watson/Image.h
 string
 -
+sstream
+-
 CImg.h
 /mnt/c/wsl$/Ubuntu/home/kirkwatson/code/21s-pa01-watson/CImg.h
+
+/mnt/c/wsl$/Ubuntu/home/kirkwatson/code/21s-pa01-watson/Stats.h
+string
+-
+fstream
+-
+iomanip
+-
 

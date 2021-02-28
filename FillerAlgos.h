@@ -28,6 +28,9 @@ public:
     Stats mostExpensive(int, int);
     Stats myHeuristicAlgo(int, int);
     void getImages(string);
+    void printPrices();
+    void sortSmallest(int,int);
+    void sortMostValue(int,int);
 };
 
 
