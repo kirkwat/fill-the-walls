@@ -1,7 +1,3 @@
-//
-// Created by watso on 2/20/2021.
-//
-
 #ifndef INC_21S_PA01_WATSON_FILLERALGOS_H
 #define INC_21S_PA01_WATSON_FILLERALGOS_H
 
@@ -24,9 +20,11 @@ public:
     FillerAlgos();
     FillerAlgos(string);
 
-    Stats smallest(int, int, int, int);
-    Stats mostExpensive(int, int, int, int);
-    Stats myHeuristicAlgo(int, int, int, int);
+
+    Stats smallest(int,int,int,int);
+    Stats mostExpensive(int,int,int,int);
+    Stats myHeuristicAlgo(int,int,int,int);
+    Stats fillWall(int, int, int, int, int,string,string);
     void getImages(string);
     void sortSmallest(int,int);
     void sortMostValue(int,int);

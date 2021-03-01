@@ -1,6 +1,3 @@
-//
-// Created by watso on 2/17/2021.
-//
 #include "WallFiller.h"
 //default constructor
 WallFiller::WallFiller(){

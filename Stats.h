@@ -1,7 +1,3 @@
-//
-// Created by watso on 2/20/2021.
-//
-
 #ifndef INC_21S_PA01_WATSON_STATS_H
 #define INC_21S_PA01_WATSON_STATS_H
 
@@ -29,12 +25,6 @@ public:
     void setWastedSpace1(double);
     void setValue2(double);
     void setWastedSpace2(double);
-
-    int getAlgoType();
-    double getValue1();
-    double getWastedSpace1();
-    double getValue2();
-    double getWastedSpace2();
 };
 
 

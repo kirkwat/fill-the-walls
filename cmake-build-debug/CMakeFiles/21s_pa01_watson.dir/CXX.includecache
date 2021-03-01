@@ -114,6 +114,10 @@ tinyexr.h
 CImg.h
 /mnt/c/wsl$/Ubuntu/home/kirkwatson/code/21s-pa01-watson/CImg.h
 
+/mnt/c/wsl$/Ubuntu/home/kirkwatson/code/21s-pa01-watson/FillerAlgos.cpp
+FillerAlgos.h
+/mnt/c/wsl$/Ubuntu/home/kirkwatson/code/21s-pa01-watson/FillerAlgos.h
+
 /mnt/c/wsl$/Ubuntu/home/kirkwatson/code/21s-pa01-watson/FillerAlgos.h
 iostream
 -
@@ -143,20 +147,4 @@ fstream
 -
 iomanip
 -
-
-/mnt/c/wsl$/Ubuntu/home/kirkwatson/code/21s-pa01-watson/WallFiller.cpp
-WallFiller.h
-/mnt/c/wsl$/Ubuntu/home/kirkwatson/code/21s-pa01-watson/WallFiller.h
-
-/mnt/c/wsl$/Ubuntu/home/kirkwatson/code/21s-pa01-watson/WallFiller.h
-vector
--
-iostream
--
-fstream
--
-Stats.h
-/mnt/c/wsl$/Ubuntu/home/kirkwatson/code/21s-pa01-watson/Stats.h
-FillerAlgos.h
-/mnt/c/wsl$/Ubuntu/home/kirkwatson/code/21s-pa01-watson/FillerAlgos.h
 

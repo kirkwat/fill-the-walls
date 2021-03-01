@@ -1,7 +1,3 @@
-//A
-// Created by watso on 2/26/2021.
-//
-
 #ifndef INC_21S_PA01_WATSON_IMAGE_H
 #define INC_21S_PA01_WATSON_IMAGE_H
 

@@ -1,7 +1,3 @@
-//
-// Created by watso on 2/26/2021.
-//
-
 #include "Image.h"
 //default constructor
 Image::Image() {
@@ -26,7 +22,9 @@ void Image::setDimensions() {
 }
 //set price
 void Image::setPrice(){
+    //get num from file name
     string priceStr=path.substr(path.find_last_of('/')+1,path.find_last_of('.')-path.find_last_of('/')-1);
+    //convert string to int
     stringstream strToInt(priceStr);
     int priceInt=0;
     strToInt>>priceInt;

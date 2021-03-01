@@ -1,7 +1,3 @@
-//
-// Created by watso on 2/20/2021.
-//
-
 #include "Stats.h"
 //default constructor
 Stats::Stats(){
@@ -58,24 +54,4 @@ void Stats::setWastedSpace1(double space){
 //set wasted space 2
 void Stats::setWastedSpace2(double space){
     wastedSpace2=(1-space)*100;
-}
-//get algorithm type
-int Stats::getAlgoType(){
-    return algoType;
-}
-//get wall 1 value
-double Stats::getValue1(){
-    return value1;
-}
-//get wall 2 value
-double Stats::getValue2(){
-    return value2;
-}
-//get wasted space 1
-double Stats::getWastedSpace1(){
-    return wastedSpace1;
-}
-//get wasted space 2
-double Stats::getWastedSpace2(){
-    return wastedSpace2;
 }
