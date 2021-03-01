@@ -14,100 +14,135 @@ FillerAlgos::FillerAlgos(string path) {
 }
 //create wall with smallest images first
 Stats FillerAlgos::smallest(int w,int h){
-    Stats info=Stats();
-
-    /*
-    //CImg<unsigned char> testImg("../program1/program1/400.jpg");
-    string imgPath=filePath+"/400.jpg";
-    //char* imgPath2=filePath+"/400.jpg";
-    //open test image
-    CImg<unsigned char> testImg(imgPath.c_str());*/
-
+    Stats info=Stats(); //stores info of algo
+    int usedArea=0; //adds up total area used
+    int x_coord=0; //x coordinate pointer
+    int y_coord=0; //y coordinate pointer
+    int imgCounter=1; //counts number of images added
+    int dir=0; //0 equals right, 1 equals left
+    int dirSwitch=0; //track which image had last direction switch
+    bool space=true; //space to add more images
 
     //create blank wall
-    CImg<unsigned char> wall;
-    wall=CImg(w,h,1,3);
+    CImg<unsigned char> wall = CImg(w,h,1,3);
     //set wall color to black
     wall.fill(0);
     //sort images by smallest
     sortSmallest(0,images.size()-1);
-    //place images on wall
-
-
-    wall.draw_image(0,0,images[0].getImage());
-
-    wall.draw_image(images[0].getWidth(),0,images[1].getImage());
-
-    wall.draw_image(images[0].getWidth()+images[1].getWidth(),0,images[2].getImage());
-
-    wall.draw_image(images[0].getWidth()+images[1].getWidth()+images[2].getWidth()-images[3].getWidth(),images[2].getHeight(),images[3].getImage());
-
-    wall.draw_image(images[0].getWidth()+images[1].getWidth()+images[2].getWidth()-images[3].getWidth()-images[4].getWidth(),images[2].getHeight(),images[4].getImage());
-
-    int x_coord=0;
-    int y_coord=0;
-    int imgCounter=1;
-    int dir=0; //0 equals right, 1 equals left
-    //before adding image check if it hits wall
-    //switch direction when wall is reached
-    //check image height
-    bool space=true;
-
-    //add first image
+    //add first image to wall
     if(images[0].getWidth()<w&&images[0].getHeight()<h){
         wall.draw_image(0,0,images[0].getImage());
+        x_coord+=images[0].getWidth();
     }
-    //add next image
+    else{
+        //TODO save empty image because smallest wont fit
+    }
+    //add remaining images horizontally
     while(space){
-        //check for no room or no more images
-        if(imgCounter==2){
+        //check for no more images
+        if(imgCounter==images.size()){
             break;
         }
         //going right
         if(dir==0){
-            x_coord+=images[imgCounter].getWidth();
             //if there is no more room right
+            x_coord+=images[imgCounter].getWidth();
             if(x_coord>w){
+                //switch direction to left
                 dir=1;
+                //x pointer moved to right wall
                 x_coord=w;
-                y_coord+=images[imgCounter-1].getHeight();
+                //move y pointer below image row using largest height from row
+                int maxHeight=0;
+                for(int x=imgCounter-1;x>=dirSwitch;x--){
+                    //change maxHeight if current height is larger
+                    if(images[x].getHeight()>maxHeight){
+                        maxHeight=images[x].getHeight();
+                    }
+                }
+                y_coord+=maxHeight;
+                //update switch
+                dirSwitch=imgCounter;
                 continue;
             }
             //add image
             else{
+                //check if image height fits in wall
+                y_coord+=images[imgCounter].getHeight();
+                //end buiding wall if image does not fit
+                if(y_coord>h){
+                    space=false;
+                    continue;
+                }
+                //if image fits, move y pointer back
+                else{
+                    y_coord-=images[imgCounter].getHeight();
+                }
+                //move x pointer back
                 x_coord-=images[imgCounter].getWidth();
+                //add image
                 wall.draw_image(x_coord,y_coord,images[imgCounter].getImage());
+                //add image area
+                usedArea+=images[imgCounter].getArea();
+                //move x pointer
                 x_coord+=images[imgCounter].getWidth();
                 imgCounter++;
             }
         }
         //going left
         else{
+            //move x pointer
             x_coord-=images[imgCounter].getWidth();
             //if there is no more room left
             if(x_coord<0){
+                //switch direction to left
                 dir=0;
+                //x pointer moved to left wall
                 x_coord=0;
-                y_coord+=images[imgCounter-1].getHeight();
+                //move y pointer below image row using largest height from row
+                int maxHeight=0;
+                for(int x=imgCounter-1;x>=dirSwitch;x--){
+                    //change maxHeight if current height is larger
+                    if(images[x].getHeight()>maxHeight){
+                        maxHeight=images[x].getHeight();
+                    }
+                }
+                y_coord+=maxHeight;
+                //update switch
+                dirSwitch=imgCounter;
                 continue;
             }
             //add image
             else{
-                x_coord+=images[imgCounter].getWidth();
+                //check if image height fits in wall
+                y_coord+=images[imgCounter].getHeight();
+                //end buiding wall if image does not fit
+                if(y_coord>h){
+                    space=false;
+                    continue;
+                }
+                //if image fits, move pointer back
+                else{
+                    y_coord-=images[imgCounter].getHeight();
+                }
+                //add image
                 wall.draw_image(x_coord,y_coord,images[imgCounter].getImage());
-                x_coord-=images[imgCounter].getWidth();
+                //add image area
+                usedArea+=images[imgCounter].getArea();
                 imgCounter++;
             }
         }
     }
-
-//TODO stop at right wall
-
-    //put image on wall
-    //wall.draw_image(0,0,testImg);
     //display wall
     wall.display("Wall Test");
 
+
+    //DONE!!!
+    //TODO
+    //update for 2 walls
+    //save images
+    //save stats
+    //then move to next algo
 
 
     //todo cimg example 2
