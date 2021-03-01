@@ -13,9 +13,9 @@ WallFiller::WallFiller(string path) {
 //create walls with the three different algos
 void WallFiller::fillWall(int w1, int h1, int w2, int h2){
     //create image with smallest first and store data
-    Stats temp=imgCreator.smallest(w1,h1,w2,h2);
-    temp.setWallNum(1);
-    walls.push_back(temp);
+    data.push_back(imgCreator.smallest(w1,h1,w2,h2));
+    //create image with most expensive first and store data
+    data.push_back(imgCreator.mostExpensive(w1,h1,w2,h2));
 
 
 
@@ -50,29 +50,8 @@ void WallFiller::outputStats(){
     }
     file<<"Fill the Walls Data"<<endl;
     //display stats for each algorithm
-    for(int x=1;x<=3;x++){
-        if(x==1){
-            file<<"Smallest first"<<endl;
-        }
-        else if(x==2){
-            file<<"Most expensive first"<<endl;
-        }
-        else{
-            file<<"My developed heuristic algorithm"<<endl;
-        }
-        //print info for each image
-        double total=0;
-        for(int y=0;y<walls.size();y++){
-            //print correct image with algo type
-            if(x==walls[y].getAlgoType()){
-                walls[y].printStats(file);
-                total+=walls[y].getValue();
-            }
-        }
-        //set precision for total
-        file<<fixed;
-        file<<setprecision(2);
-        file<<"Total profit: $"<<total<<endl<<endl;
+    for(int y=0;y<data.size();y++){
+        data[y].printStats(file);
     }
     //close file
     file.close();

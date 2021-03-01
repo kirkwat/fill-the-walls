@@ -15,12 +15,12 @@ int main(int argc, char** argv) {
     //test wall
     filler1.fillWall(750,750,500,500);
     //test stats
-    //filler1.outputStats();
+    filler1.outputStats();
 
-    //TODO change to have the two walls made at the same time with different images
+
 
     /*
-    //fill wall 1 with 3 algorithms
+    //fill walls 1 and 2 with 3 algorithms
     cout<<"Filling Walls..."<<endl;
     filler1.fillWall(stoi(argv[2]),stoi(argv[3]),stoi(argv[4]),stoi(argv[5]));
     cout<<"...Complete"<<endl<<endl;

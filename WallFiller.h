@@ -16,7 +16,7 @@ using namespace std;
 class WallFiller {
 private:
     FillerAlgos imgCreator;
-    vector<Stats> walls;
+    vector<Stats> data;
 
 public:
     WallFiller();

@@ -1,10 +1,19 @@
 Fill the Walls Data
 Smallest first
-Total profit: $0.00
+	Wall 1:
+		Total value:   $110385.00
+		Wasted Space:  42.03%
+	Wall 2:
+		Total value:   $1899.00
+		Wasted Space:  39.65%
+Total profit: $112284.00
 
-Most expensive first
-Total profit: $0.00
-
-My developed heuristic algorithm
-Total profit: $0.00
+Smallest first
+	Wall 1:
+		Total value:   $103160.00
+		Wasted Space:  60.26%
+	Wall 2:
+		Total value:   $7878.00
+		Wasted Space:  38.87%
+Total profit: $111038.00
 

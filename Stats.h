@@ -21,17 +21,20 @@ private:
 
 public:
     Stats();
+    Stats(int);
 
     void printStats(ofstream&);
-    void addToValue(int);
 
-    void setAlgoType(int);
-    void setValue(double);
-    void setWastedSpace(double);
+    void setValue1(double);
+    void setWastedSpace1(double);
+    void setValue2(double);
+    void setWastedSpace2(double);
 
     int getAlgoType();
-    double getValue();
-    double getWastedSpace();
+    double getValue1();
+    double getWastedSpace1();
+    double getValue2();
+    double getWastedSpace2();
 };
 
 

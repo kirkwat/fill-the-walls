@@ -15,37 +15,41 @@ FillerAlgos::FillerAlgos(string path) {
 }
 //create wall with smallest images first
 Stats FillerAlgos::smallest(int w1,int h1, int w2, int h2){
-    Stats info=Stats(); //stores info of algo
-    int usedArea1=0; //adds up total area used for wall 1
-    int usedArea2=0; //adds up total area used for wall 2
+    Stats info=Stats(1); //stores info of algo
+    double usedArea1=0; //adds up total area used for wall 1
     double totalVal1=0; //adds up total value used for wall 1
-    double totalVal2=0; //adds up total value used for wall 2
     int x_coord=0; //x coordinate pointer
     int y_coord=0; //y coordinate pointer
     int imgCounter=1; //counts number of images added
     int dir=0; //0 equals right, 1 equals left
     int dirSwitch=0; //track which image had last direction switch
     bool space=true; //space to add more images
-    //create blank wall
+    //sort images by smallest
+    sortSmallest(0,images.size()-1);
+    //split images for wall 1 and 2
+    splitImages();
+    //create blank wall 1
     CImg<unsigned char> wall1 = CImg(w1,h1,1,3);
     //set wall color to black
     wall1.fill(0);
-    //sort images by smallest
-    sortSmallest(0,images.size()-1);
-    //add first image to wall
-    if(images[0].getWidth()<w1&&images[0].getHeight()<h1){
-        wall1.draw_image(0,0,images[0].getImage());
-        x_coord+=images[0].getWidth();
+    //add images to wall 1
+    if(w1Images[0].getWidth()<w1&&w1Images[0].getHeight()<h1){
+        //add first image
+        wall1.draw_image(0,0,w1Images[0].getImage());
+        usedArea1+=w1Images[0].getArea();
+        totalVal1+=w1Images[0].getPrice();
+        //move x pointer
+        x_coord+=w1Images[0].getWidth();
         //add remaining images horizontally
         while(space){
             //check for no more images
-            if(imgCounter==images.size()){
+            if(imgCounter==w1Images.size()){
                 break;
             }
             //going right
             if(dir==0){
                 //if there is no more room right
-                x_coord+=images[imgCounter].getWidth();
+                x_coord+=w1Images[imgCounter].getWidth();
                 if(x_coord>w1){
                     //switch direction to left
                     dir=1;
@@ -55,8 +59,8 @@ Stats FillerAlgos::smallest(int w1,int h1, int w2, int h2){
                     int maxHeight=0;
                     for(int x=imgCounter-1;x>=dirSwitch;x--){
                         //change maxHeight if current height is larger
-                        if(images[x].getHeight()>maxHeight){
-                            maxHeight=images[x].getHeight();
+                        if(w1Images[x].getHeight()>maxHeight){
+                            maxHeight=w1Images[x].getHeight();
                         }
                     }
                     y_coord+=maxHeight;
@@ -67,33 +71,33 @@ Stats FillerAlgos::smallest(int w1,int h1, int w2, int h2){
                 //add image
                 else{
                     //check if image height fits in wall
-                    y_coord+=images[imgCounter].getHeight();
+                    y_coord+=w1Images[imgCounter].getHeight();
                     //end buiding wall if image does not fit
                     if(y_coord>h1){
                         space=false;
                         continue;
                     }
-                        //if image fits, move y pointer back
+                    //if image fits, move y pointer back
                     else{
-                        y_coord-=images[imgCounter].getHeight();
+                        y_coord-=w1Images[imgCounter].getHeight();
                     }
                     //move x pointer back
-                    x_coord-=images[imgCounter].getWidth();
+                    x_coord-=w1Images[imgCounter].getWidth();
                     //add image
-                    wall1.draw_image(x_coord,y_coord,images[imgCounter].getImage());
+                    wall1.draw_image(x_coord,y_coord,w1Images[imgCounter].getImage());
                     //add image area
-                    usedArea1+=images[imgCounter].getArea();
+                    usedArea1+=w1Images[imgCounter].getArea();
                     //add image value
-                    totalVal1+=images[imgCounter].getPrice();
+                    totalVal1+=w1Images[imgCounter].getPrice();
                     //move x pointer
-                    x_coord+=images[imgCounter].getWidth();
+                    x_coord+=w1Images[imgCounter].getWidth();
                     imgCounter++;
                 }
             }
             //going left
             else{
                 //move x pointer
-                x_coord-=images[imgCounter].getWidth();
+                x_coord-=w1Images[imgCounter].getWidth();
                 //if there is no more room left
                 if(x_coord<0){
                     //switch direction to left
@@ -104,8 +108,8 @@ Stats FillerAlgos::smallest(int w1,int h1, int w2, int h2){
                     int maxHeight=0;
                     for(int x=imgCounter-1;x>=dirSwitch;x--){
                         //change maxHeight if current height is larger
-                        if(images[x].getHeight()>maxHeight){
-                            maxHeight=images[x].getHeight();
+                        if(w1Images[x].getHeight()>maxHeight){
+                            maxHeight=w1Images[x].getHeight();
                         }
                     }
                     y_coord+=maxHeight;
@@ -116,7 +120,7 @@ Stats FillerAlgos::smallest(int w1,int h1, int w2, int h2){
                     //add image
                 else{
                     //check if image height fits in wall
-                    y_coord+=images[imgCounter].getHeight();
+                    y_coord+=w1Images[imgCounter].getHeight();
                     //end buiding wall if image does not fit
                     if(y_coord>h1){
                         space=false;
@@ -124,119 +128,423 @@ Stats FillerAlgos::smallest(int w1,int h1, int w2, int h2){
                     }
                     //if image fits, move pointer back
                     else{
-                        y_coord-=images[imgCounter].getHeight();
+                        y_coord-=w1Images[imgCounter].getHeight();
                     }
                     //add image
-                    wall1.draw_image(x_coord,y_coord,images[imgCounter].getImage());
+                    wall1.draw_image(x_coord,y_coord,w1Images[imgCounter].getImage());
                     //add image area
-                    usedArea1+=images[imgCounter].getArea();
+                    usedArea1+=w1Images[imgCounter].getArea();
                     //add image value
-                    totalVal1+=images[imgCounter].getPrice();
+                    totalVal1+=w1Images[imgCounter].getPrice();
                     imgCounter++;
                 }
             }
         }
     }
-    //TODO save wall1 stats
-    //TODO save wall1 image
-
-    //TODO repeat for wall1
-
-
-    //display wall
-    wall1.display("Wall Test");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //DONE!!!
-    //TODO
-    //update for 2 walls
-    //save images
-    //save stats
-    //then move to next algo
-
-
-    //todo cimg example 2
-    /*
-    CImg<unsigned char> img(640,400,1,3);         // Define a 640x400 color image with 8 bits per color component.
-    img.fill(0);                                  // Set pixel values to 0 (color : black)
-    unsigned char purple[] = { 255,0,255 };       // Define a purple color
-    img.draw_text(100,100,"Hello World",purple);  // Draw a purple "Hello world" at coordinates (100,100).
-    img.display("Window Title");                  // Display the image in a display window.
-    img.save_png("test.png");                     // Save as PNG to prove we linked correctly
-    img.save_jpeg("test.jpg");                    // Save as JPG to prove we linked correctly
-    */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    //store wall 1 stats
+    info.setValue1(totalVal1);
+    info.setWastedSpace1(usedArea1/(w1*h1));
+    //save wall 1 image
+    wall1.save_jpeg("wall1_smallest.jpg");
+    //reset indicators
+    double usedArea2=0;
+    double totalVal2=0;
+    x_coord=0;
+    y_coord=0;
+    imgCounter=1;
+    dir=0;
+    dirSwitch=0;
+    space=true;
+    //create blank wall 2
+    CImg<unsigned char> wall2 = CImg(w2,h2,1,3);
+    //set wall color to black
+    wall2.fill(0);
+    //add images to wall 2
+    if(w2Images[0].getWidth()<w2&&w2Images[0].getHeight()<h2){
+        //add first image
+        wall2.draw_image(0,0,w2Images[0].getImage());
+        usedArea2+=w2Images[0].getArea();
+        totalVal2+=w2Images[0].getPrice();
+        //move pointer
+        x_coord+=w2Images[0].getWidth();
+        //add remaining images horizontally
+        while(space){
+            //check for no more images
+            if(imgCounter==w2Images.size()){
+                break;
+            }
+            //going right
+            if(dir==0){
+                //if there is no more room right
+                x_coord+=w2Images[imgCounter].getWidth();
+                if(x_coord>w2){
+                    //switch direction to left
+                    dir=1;
+                    //x pointer moved to right wall
+                    x_coord=w2;
+                    //move y pointer below image row using largest height from row
+                    int maxHeight=0;
+                    for(int x=imgCounter-1;x>=dirSwitch;x--){
+                        //change maxHeight if current height is larger
+                        if(w2Images[x].getHeight()>maxHeight){
+                            maxHeight=w2Images[x].getHeight();
+                        }
+                    }
+                    y_coord+=maxHeight;
+                    //update switch
+                    dirSwitch=imgCounter;
+                    continue;
+                }
+                //add image
+                else{
+                    //check if image height fits in wall
+                    y_coord+=w2Images[imgCounter].getHeight();
+                    //end buiding wall if image does not fit
+                    if(y_coord>h2){
+                        space=false;
+                        continue;
+                    }
+                    //if image fits, move y pointer back
+                    else{
+                        y_coord-=w2Images[imgCounter].getHeight();
+                    }
+                    //move x pointer back
+                    x_coord-=w2Images[imgCounter].getWidth();
+                    //add image
+                    wall2.draw_image(x_coord,y_coord,w2Images[imgCounter].getImage());
+                    //add image area
+                    usedArea2+=w2Images[imgCounter].getArea();
+                    //add image value
+                    totalVal2+=w2Images[imgCounter].getPrice();
+                    //move x pointer
+                    x_coord+=w2Images[imgCounter].getWidth();
+                    imgCounter++;
+                }
+            }
+            //going left
+            else{
+                //move x pointer
+                x_coord-=w2Images[imgCounter].getWidth();
+                //if there is no more room left
+                if(x_coord<0){
+                    //switch direction to left
+                    dir=0;
+                    //x pointer moved to left wall
+                    x_coord=0;
+                    //move y pointer below image row using largest height from row
+                    int maxHeight=0;
+                    for(int x=imgCounter-1;x>=dirSwitch;x--){
+                        //change maxHeight if current height is larger
+                        if(w2Images[x].getHeight()>maxHeight){
+                            maxHeight=w2Images[x].getHeight();
+                        }
+                    }
+                    y_coord+=maxHeight;
+                    //update switch
+                    dirSwitch=imgCounter;
+                    continue;
+                }
+                //add image
+                else{
+                    //check if image height fits in wall
+                    y_coord+=w2Images[imgCounter].getHeight();
+                    //end buiding wall if image does not fit
+                    if(y_coord>h2){
+                        space=false;
+                        continue;
+                    }
+                    //if image fits, move pointer back
+                    else{
+                        y_coord-=w2Images[imgCounter].getHeight();
+                    }
+                    //add image
+                    wall2.draw_image(x_coord,y_coord,w2Images[imgCounter].getImage());
+                    //add image area
+                    usedArea2+=w2Images[imgCounter].getArea();
+                    //add image value
+                    totalVal2+=w2Images[imgCounter].getPrice();
+                    imgCounter++;
+                }
+            }
+        }
+    }
+    //store wall 2 stats
+    info.setValue2(totalVal2);
+    info.setWastedSpace2(usedArea2/(w2*h2));
+    //save wall 2 image
+    wall2.save_jpeg("wall2_smallest.jpg");
+    //return data
     return info;
 }
 //create wall with most expensive images first
-Stats FillerAlgos::mostExpensive(int,int){
-    Stats info=Stats();
-
-
-
-
-
+Stats FillerAlgos::mostExpensive(int w1,int h1, int w2, int h2){
+    Stats info=Stats(1); //stores info of algo
+    double usedArea1=0; //adds up total area used for wall 1
+    double totalVal1=0; //adds up total value used for wall 1
+    int x_coord=0; //x coordinate pointer
+    int y_coord=0; //y coordinate pointer
+    int imgCounter=1; //counts number of images added
+    int dir=0; //0 equals right, 1 equals left
+    int dirSwitch=0; //track which image had last direction switch
+    bool space=true; //space to add more images
+    //sort images by smallest
+    sortMostValue(0,images.size()-1);
+    //split images for wall 1 and 2
+    splitImages();
+    //create blank wall 1
+    CImg<unsigned char> wall1 = CImg(w1,h1,1,3);
+    //set wall color to black
+    wall1.fill(0);
+    //add images to wall 1
+    if(w1Images[0].getWidth()<w1&&w1Images[0].getHeight()<h1){
+        //add first image
+        wall1.draw_image(0,0,w1Images[0].getImage());
+        usedArea1+=w1Images[0].getArea();
+        totalVal1+=w1Images[0].getPrice();
+        //move x pointer
+        x_coord+=w1Images[0].getWidth();
+        //add remaining images horizontally
+        while(space){
+            //check for no more images
+            if(imgCounter==w1Images.size()){
+                break;
+            }
+            //going right
+            if(dir==0){
+                //if there is no more room right
+                x_coord+=w1Images[imgCounter].getWidth();
+                if(x_coord>w1){
+                    //switch direction to left
+                    dir=1;
+                    //x pointer moved to right wall
+                    x_coord=w1;
+                    //move y pointer below image row using largest height from row
+                    int maxHeight=0;
+                    for(int x=imgCounter-1;x>=dirSwitch;x--){
+                        //change maxHeight if current height is larger
+                        if(w1Images[x].getHeight()>maxHeight){
+                            maxHeight=w1Images[x].getHeight();
+                        }
+                    }
+                    y_coord+=maxHeight;
+                    //update switch
+                    dirSwitch=imgCounter;
+                    continue;
+                }
+                    //add image
+                else{
+                    //check if image height fits in wall
+                    y_coord+=w1Images[imgCounter].getHeight();
+                    //end buiding wall if image does not fit
+                    if(y_coord>h1){
+                        space=false;
+                        continue;
+                    }
+                        //if image fits, move y pointer back
+                    else{
+                        y_coord-=w1Images[imgCounter].getHeight();
+                    }
+                    //move x pointer back
+                    x_coord-=w1Images[imgCounter].getWidth();
+                    //add image
+                    wall1.draw_image(x_coord,y_coord,w1Images[imgCounter].getImage());
+                    //add image area
+                    usedArea1+=w1Images[imgCounter].getArea();
+                    //add image value
+                    totalVal1+=w1Images[imgCounter].getPrice();
+                    //move x pointer
+                    x_coord+=w1Images[imgCounter].getWidth();
+                    imgCounter++;
+                }
+            }
+                //going left
+            else{
+                //move x pointer
+                x_coord-=w1Images[imgCounter].getWidth();
+                //if there is no more room left
+                if(x_coord<0){
+                    //switch direction to left
+                    dir=0;
+                    //x pointer moved to left wall
+                    x_coord=0;
+                    //move y pointer below image row using largest height from row
+                    int maxHeight=0;
+                    for(int x=imgCounter-1;x>=dirSwitch;x--){
+                        //change maxHeight if current height is larger
+                        if(w1Images[x].getHeight()>maxHeight){
+                            maxHeight=w1Images[x].getHeight();
+                        }
+                    }
+                    y_coord+=maxHeight;
+                    //update switch
+                    dirSwitch=imgCounter;
+                    continue;
+                }
+                    //add image
+                else{
+                    //check if image height fits in wall
+                    y_coord+=w1Images[imgCounter].getHeight();
+                    //end buiding wall if image does not fit
+                    if(y_coord>h1){
+                        space=false;
+                        continue;
+                    }
+                        //if image fits, move pointer back
+                    else{
+                        y_coord-=w1Images[imgCounter].getHeight();
+                    }
+                    //add image
+                    wall1.draw_image(x_coord,y_coord,w1Images[imgCounter].getImage());
+                    //add image area
+                    usedArea1+=w1Images[imgCounter].getArea();
+                    //add image value
+                    totalVal1+=w1Images[imgCounter].getPrice();
+                    imgCounter++;
+                }
+            }
+        }
+    }
+    //store wall 1 stats
+    info.setValue1(totalVal1);
+    info.setWastedSpace1(usedArea1/(w1*h1));
+    //save wall 1 image
+    wall1.save_jpeg("wall1_most_expensive.jpg");
+    //reset indicators
+    double usedArea2=0;
+    double totalVal2=0;
+    x_coord=0;
+    y_coord=0;
+    imgCounter=1;
+    dir=0;
+    dirSwitch=0;
+    space=true;
+    //create blank wall 2
+    CImg<unsigned char> wall2 = CImg(w2,h2,1,3);
+    //set wall color to black
+    wall2.fill(0);
+    //add images to wall 2
+    if(w2Images[0].getWidth()<w2&&w2Images[0].getHeight()<h2){
+        //add first image
+        wall2.draw_image(0,0,w2Images[0].getImage());
+        usedArea2+=w2Images[0].getArea();
+        totalVal2+=w2Images[0].getPrice();
+        //move pointer
+        x_coord+=w2Images[0].getWidth();
+        //add remaining images horizontally
+        while(space){
+            //check for no more images
+            if(imgCounter==w2Images.size()){
+                break;
+            }
+            //going right
+            if(dir==0){
+                //if there is no more room right
+                x_coord+=w2Images[imgCounter].getWidth();
+                if(x_coord>w2){
+                    //switch direction to left
+                    dir=1;
+                    //x pointer moved to right wall
+                    x_coord=w2;
+                    //move y pointer below image row using largest height from row
+                    int maxHeight=0;
+                    for(int x=imgCounter-1;x>=dirSwitch;x--){
+                        //change maxHeight if current height is larger
+                        if(w2Images[x].getHeight()>maxHeight){
+                            maxHeight=w2Images[x].getHeight();
+                        }
+                    }
+                    y_coord+=maxHeight;
+                    //update switch
+                    dirSwitch=imgCounter;
+                    continue;
+                }
+                    //add image
+                else{
+                    //check if image height fits in wall
+                    y_coord+=w2Images[imgCounter].getHeight();
+                    //end buiding wall if image does not fit
+                    if(y_coord>h2){
+                        space=false;
+                        continue;
+                    }
+                        //if image fits, move y pointer back
+                    else{
+                        y_coord-=w2Images[imgCounter].getHeight();
+                    }
+                    //move x pointer back
+                    x_coord-=w2Images[imgCounter].getWidth();
+                    //add image
+                    wall2.draw_image(x_coord,y_coord,w2Images[imgCounter].getImage());
+                    //add image area
+                    usedArea2+=w2Images[imgCounter].getArea();
+                    //add image value
+                    totalVal2+=w2Images[imgCounter].getPrice();
+                    //move x pointer
+                    x_coord+=w2Images[imgCounter].getWidth();
+                    imgCounter++;
+                }
+            }
+                //going left
+            else{
+                //move x pointer
+                x_coord-=w2Images[imgCounter].getWidth();
+                //if there is no more room left
+                if(x_coord<0){
+                    //switch direction to left
+                    dir=0;
+                    //x pointer moved to left wall
+                    x_coord=0;
+                    //move y pointer below image row using largest height from row
+                    int maxHeight=0;
+                    for(int x=imgCounter-1;x>=dirSwitch;x--){
+                        //change maxHeight if current height is larger
+                        if(w2Images[x].getHeight()>maxHeight){
+                            maxHeight=w2Images[x].getHeight();
+                        }
+                    }
+                    y_coord+=maxHeight;
+                    //update switch
+                    dirSwitch=imgCounter;
+                    continue;
+                }
+                    //add image
+                else{
+                    //check if image height fits in wall
+                    y_coord+=w2Images[imgCounter].getHeight();
+                    //end buiding wall if image does not fit
+                    if(y_coord>h2){
+                        space=false;
+                        continue;
+                    }
+                        //if image fits, move pointer back
+                    else{
+                        y_coord-=w2Images[imgCounter].getHeight();
+                    }
+                    //add image
+                    wall2.draw_image(x_coord,y_coord,w2Images[imgCounter].getImage());
+                    //add image area
+                    usedArea2+=w2Images[imgCounter].getArea();
+                    //add image value
+                    totalVal2+=w2Images[imgCounter].getPrice();
+                    imgCounter++;
+                }
+            }
+        }
+    }
+    //store wall 2 stats
+    info.setValue2(totalVal2);
+    info.setWastedSpace2(usedArea2/(w2*h2));
+    //save wall 2 image
+    wall2.save_jpeg("wall2_most_expensive.jpg");
+    //return data
     return info;
 }
 //create wall with my unique algo
-Stats FillerAlgos::myHeuristicAlgo(int,int){
+Stats FillerAlgos::myHeuristicAlgo(int w1,int h1, int w2, int h2){
     Stats info=Stats();
 
 
-
+    //TODO
 
 
     return info;
@@ -275,16 +583,17 @@ void FillerAlgos::getImages(string path) {
     closedir(directory);
 }
 //split images into 2 vectors for wall 1 and wall 2
-//TODO delete
-void FillerAlgos::printPrices() {
-    //set precision for prices
-    cout<<fixed;
-    cout<<setprecision(2);
+void FillerAlgos::splitImages() {
+    w1Images.clear();
+    w2Images.clear();
     for(int x=0;x<images.size();x++){
-        cout<<"Image "<<x+1<<": "<<images[x].getPrice()<<endl;
-        cout<<"\tWidth: "<<images[x].getWidth()<<endl;
-        cout<<"\tHeight: "<<images[x].getHeight()<<endl;
-        cout<<"\tArea: "<<images[x].getArea()<<endl;
+        //divide by odd and even
+        if(x%2==0){
+            w1Images.push_back(images[x]);
+        }
+        else{
+            w2Images.push_back(images[x]);
+        }
     }
 }
 //sort by smallest by area using quicksort
