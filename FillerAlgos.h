@@ -19,8 +19,6 @@ class FillerAlgos {
 private:
     string filePath;
     vector<Image> images;
-    vector<Image> w1Images;
-    vector<Image> w2Images;
 
 public:
     FillerAlgos();
@@ -30,9 +28,11 @@ public:
     Stats mostExpensive(int, int, int, int);
     Stats myHeuristicAlgo(int, int, int, int);
     void getImages(string);
-    void splitImages();
     void sortSmallest(int,int);
     void sortMostValue(int,int);
+    void sortMyDesign1();
+    void sortMyDesign2(int,int);
+
 };
 
 

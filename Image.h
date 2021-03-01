@@ -19,6 +19,7 @@ private:
     double price;
     string path;
     CImg<unsigned char> image;
+    int score;
 
 public:
     Image();
@@ -26,12 +27,14 @@ public:
 
     void setDimensions();
     void setPrice();
+    void addToScore(int);
     int getWidth();
     int getHeight();
     double getPrice();
     int getArea();
     string getPath();
     CImg<unsigned char> getImage();
+    int getScore();
 };
 
 

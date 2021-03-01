@@ -16,27 +16,8 @@ void WallFiller::fillWall(int w1, int h1, int w2, int h2){
     data.push_back(imgCreator.smallest(w1,h1,w2,h2));
     //create image with most expensive first and store data
     data.push_back(imgCreator.mostExpensive(w1,h1,w2,h2));
-
-
-
-
-
-
-
-
-
-
-
-    //TODO uncomment after completing smallest first
-    /*
-    //create image with most expensive first and store data
-    temp=imgCreator.mostExpensive(w,h);
-    temp.setWallNum(wallNum);
-    images.push_back(temp);
-    //create image with my algo and store data
-    temp=imgCreator.myHeuristicAlgo(w,h);
-    temp.setWallNum(wallNum);
-    images.push_back(temp);*/
+    //create image with a combination of smallest and most expensive first
+    data.push_back(imgCreator.myHeuristicAlgo(w1,h1,w2,h2));
 }
 //output stats for walls and algorithms
 void WallFiller::outputStats(){
