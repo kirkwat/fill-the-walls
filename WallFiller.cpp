@@ -11,11 +11,22 @@ WallFiller::WallFiller(string path) {
     imgCreator=FillerAlgos(path);
 }
 //create walls with the three different algos
-void WallFiller::fillWall(int w, int h, int wallNum){
+void WallFiller::fillWall(int w1, int h1, int w2, int h2){
     //create image with smallest first and store data
-    Stats temp=imgCreator.smallest(w,h);
-    temp.setWallNum(wallNum);
+    Stats temp=imgCreator.smallest(w1,h1,w2,h2);
+    temp.setWallNum(1);
     walls.push_back(temp);
+
+
+
+
+
+
+
+
+
+
+
     //TODO uncomment after completing smallest first
     /*
     //create image with most expensive first and store data

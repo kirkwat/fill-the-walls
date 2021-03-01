@@ -5,7 +5,6 @@
 #include "Stats.h"
 //default constructor
 Stats::Stats(){
-    wallNum=0;
     algoType=0;
     value=0;
     wastedSpace=0;
@@ -25,10 +24,6 @@ void Stats::printStats(ofstream &file) {
 void Stats::addToValue(int toAdd){
     value+=toAdd;
 }
-//set wall number
-void Stats::setWallNum(int num){
-    wallNum=num;
-}
 //set algorithm type
 void Stats::setAlgoType(int type){
     algoType=type;
@@ -40,10 +35,6 @@ void Stats::setValue(double val){
 //set wasted space
 void Stats::setWastedSpace(double space){
     wastedSpace=space;
-}
-//get wall number
-int Stats::getWallNum(){
-    return wallNum;
 }
 //get algorithm type
 int Stats::getAlgoType(){

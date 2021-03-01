@@ -22,7 +22,7 @@ public:
     WallFiller();
     WallFiller(string);
 
-    void fillWall(int,int,int);
+    void fillWall(int,int,int,int);
     void outputStats();
 };
 

@@ -13,7 +13,7 @@ int main(int argc, char** argv) {
 
 
     //test wall
-    filler1.fillWall(750,750,1);
+    filler1.fillWall(750,750,500,500);
     //test stats
     //filler1.outputStats();
 
@@ -21,13 +21,9 @@ int main(int argc, char** argv) {
 
     /*
     //fill wall 1 with 3 algorithms
-    cout<<"Filling Wall 1..."<<endl;
-    filler1.fillWall(stoi(argv[2]),stoi(argv[3]),1);
+    cout<<"Filling Walls..."<<endl;
+    filler1.fillWall(stoi(argv[2]),stoi(argv[3]),stoi(argv[4]),stoi(argv[5]));
     cout<<"...Complete"<<endl<<endl;
-    //wall 2 with 3 algorithms
-    cout<<"Filling Wall 2..."<<endl;
-    filler1.fillWall(stoi(argv[4]),stoi(argv[5]),2);
-    cout<<"...Complete"<<endl;
      //output algorithm stats with wall 1 and wall 2
     filler1.outputStats();
      */

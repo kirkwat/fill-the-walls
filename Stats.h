@@ -13,10 +13,11 @@ using namespace std;
 
 class Stats {
 private:
-    int wallNum;
     int algoType;
-    double value;
-    double wastedSpace;
+    double value1;
+    double wastedSpace1;
+    double value2;
+    double wastedSpace2;
 
 public:
     Stats();
@@ -24,12 +25,10 @@ public:
     void printStats(ofstream&);
     void addToValue(int);
 
-    void setWallNum(int);
     void setAlgoType(int);
     void setValue(double);
     void setWastedSpace(double);
 
-    int getWallNum();
     int getAlgoType();
     double getValue();
     double getWastedSpace();
