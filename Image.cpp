@@ -1,3 +1,4 @@
+//Kirk Watson - 47876885 - CS3353
 #include "Image.h"
 //default constructor
 Image::Image() {
@@ -8,6 +9,7 @@ Image::Image() {
     score=0;
 }
 //overloaded constructor with path
+//arguments - image file path
 Image::Image(string p){
     path=p;
     setPrice();

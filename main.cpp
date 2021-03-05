@@ -1,3 +1,4 @@
+//Kirk Watson - 47876885 - CS3353
 #define cimg_use_jpeg 1
 #include "CImg.h"
 #include <string>
@@ -6,9 +7,8 @@
 
 using namespace std;
 using namespace cimg_library;
-
+//COMMAND LINE ARGUMENTS FORMAT EXAMPLE - "../program1 10000 4000 12000 4000" - file path, wall 1 width, wall 1 height, wall 2 width, wall 2 height
 int main(int argc, char** argv) {
-    //COMMAND LINE ARGUMENTS FORMAT EXAMPLE - "../program1 10000 4000 12000 4000" - file path, wall 1 width, wall 1 height, wall 2 width, wall 2 height
     //create wall filler
     WallFiller filler1=WallFiller(argv[1]);
     //fill walls 1 and 2 with 3 algorithms
@@ -20,9 +20,6 @@ int main(int argc, char** argv) {
 
     return 0;
 }
-
-
-//width by height
 
 //how to open ubuntu files
     // \\wsl$

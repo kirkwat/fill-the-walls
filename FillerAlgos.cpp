@@ -1,40 +1,46 @@
+//Kirk Watson - 47876885 - CS3353
 #include "FillerAlgos.h"
 //default constructor
 FillerAlgos::FillerAlgos(){
     filePath="NULL";
 }
 //overloaded constructor with path
+//arguments - image file path
 FillerAlgos::FillerAlgos(string path) {
     filePath=path;
     getImages(filePath);
 }
 //create images by placing smallest images on wall first
+//arguments - wall 1 width, wall 1 height, wall 2 width, wall 2 height
 Stats FillerAlgos::smallest(int w1,int h1, int w2, int h2){
     sortSmallest(0,images.size()-1);
     return fillWall(1,w1,h1,w2,h2,"wall1_smallest.jpg","wall2_smallest.jpg");
 }
 //create images by placing most expensive images on wall first
+//arguments - wall 1 width, wall 1 height, wall 2 width, wall 2 height
 Stats FillerAlgos::mostExpensive(int w1,int h1, int w2, int h2){
     sortMostValue(0,images.size()-1);
     return fillWall(2,w1,h1,w2,h2,"wall1_most_expensive.jpg","wall2_most_expensive.jpg");
 }
 //create images by placing a combination of smallest and most expensive images on wall first
+//arguments - wall 1 width, wall 1 height, wall 2 width, wall 2 height
 Stats FillerAlgos::myHeuristicAlgo(int w1,int h1, int w2, int h2){
     sortMyDesign1();
     return fillWall(3,w1,h1,w2,h2,"wall1_my_design.jpg","wall2_my_design.jpg");
 }
 //fill walls 1 and 2 with images
+//arguments - algorithm mode, wall 1 width, wall 1 height, wall 2 width, wall 2 height, wall 1 file name, wall 2 file name
 Stats FillerAlgos::fillWall(int mode, int w1, int h1, int w2, int h2, string img1, string img2){
     Stats info=Stats(mode); //stores info of algo
     double usedArea1=0; //adds up total area used for wall 1
     double totalVal1=0; //adds up total value used for wall 1
-    int x_coord=0; //x coordinate pointer
-    int y_coord=0; //y coordinate pointer
-    int imgCounter=1; //counts number of images added
-    int dir=0; //0 equals right, 1 equals left
-    int dirSwitch=0; //track which image had last direction switch
-    bool space=true; //space to add more images
-    bool allOn1=false; //check if all images are used on the wall 1 to end build
+    int x_coord=0;      //x coordinate pointer
+    int y_coord=0;      //y coordinate pointer
+    int imgCounter=1;   //counts number of images added
+    int dir=0;          //0 equals right, 1 equals left
+    int dirSwitch=0;    //track which image had last direction switch
+    bool space=true;    //space to add more images
+    bool allOn1=false;  //check if all images are used on the wall 1 to end build
     //create blank wall 1
     CImg<unsigned char> wall1 = CImg(w1,h1,1,3);
     //set wall color to black
@@ -292,6 +298,7 @@ Stats FillerAlgos::fillWall(int mode, int w1, int h1, int w2, int h2, string img
     return info;
 }
 //read through image directory
+//arguments - image folder file path
 void FillerAlgos::getImages(string path) {
     DIR *directory;
     struct dirent *entry;
@@ -325,6 +332,7 @@ void FillerAlgos::getImages(string path) {
     closedir(directory);
 }
 //sort by smallest by area using quicksort
+//arguments - left side of vector, right side of vector
 void FillerAlgos::sortSmallest(int left, int right){
     //end sort if size is less than or equal to 1
     if (left >= right){
@@ -348,6 +356,7 @@ void FillerAlgos::sortSmallest(int left, int right){
     sortSmallest(num, right);
 }
 //sort by most expensive using quicksort
+//arguments - left side of vector, right side of vector
 void FillerAlgos::sortMostValue(int left, int right){
     //end sort if size is less than or equal to 1
     if (left >= right){
@@ -388,6 +397,7 @@ void FillerAlgos::sortMyDesign1() {
     sortMyDesign2(0,images.size()-1);
 }
 //sort by lowest scores using quicksort
+//arguments - left side of vector, right side of vector
 void FillerAlgos::sortMyDesign2(int left, int right) {
     //end sort if size is less than or equal to 1
     if (left >= right){

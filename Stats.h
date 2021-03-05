@@ -1,3 +1,4 @@
+//Kirk Watson - 47876885 - CS3353
 #ifndef INC_21S_PA01_WATSON_STATS_H
 #define INC_21S_PA01_WATSON_STATS_H
 
@@ -7,13 +8,14 @@
 
 using namespace std;
 
+//This class is used to store information on the walls 1 and 2 made by the algorithms.
 class Stats {
 private:
-    int algoType;
-    double value1;
-    double wastedSpace1;
-    double value2;
-    double wastedSpace2;
+    int algoType;           //lets us know which algorithm was used for this set
+    double value1;          //value of wall 1
+    double wastedSpace1;    //amount of space wasted in wall 1
+    double value2;          //value of wall 2
+    double wastedSpace2;    //amount of space wasted in wall 2
 
 public:
     Stats();

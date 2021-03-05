@@ -1,3 +1,4 @@
+//Kirk Watson - 47876885 - CS3353
 #include "Stats.h"
 //default constructor
 Stats::Stats(){
@@ -8,6 +9,7 @@ Stats::Stats(){
     wastedSpace2=0;
 }
 //overloaded constructor with algo type
+//arguments - algorithm type
 Stats::Stats(int a){
     algoType=a;
     value1=0;

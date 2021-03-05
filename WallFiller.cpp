@@ -1,3 +1,4 @@
+//Kirk Watson - 47876885 - CS3353
 #include "WallFiller.h"
 //default constructor
 WallFiller::WallFiller(){
@@ -8,6 +9,7 @@ WallFiller::WallFiller(string path) {
     imgCreator=FillerAlgos(path);
 }
 //create walls with the three different algos
+//arguments - wall 1 width, wall 1 height, wall 2 width, wall 2 height
 void WallFiller::fillWall(int w1, int h1, int w2, int h2){
     //create image with smallest first and store data
     data.push_back(imgCreator.smallest(w1,h1,w2,h2));
