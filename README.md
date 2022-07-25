@@ -1,9 +1,11 @@
-# CS 3353 Programming Project 1
-This repository was created and maintained by Kirk Watson.
-
-Student ID: 47876885
+# Fill the Walls - CS 3353 Project 1
+Developed and maintained by Kirk Watson.
 
 Email: klwatson@smu.edu
+
+Class: Algorithms CS 3353 - Spring 2021
+
+Southern Methodist University
 
 ## Functionality
 This program takes a group of images with monetary values and efficiently places them on 2 different walls.
