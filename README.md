@@ -26,7 +26,8 @@ To use this program, the user will need to provide some command-line arguments a
 * Wall 2 height
 
 Here is an example:
-* ./placement images/set1/ 10000 4000 12000 4000
+
+`./placement images/set1/ 10000 4000 12000 4000`
 
 ### Image folder
 This folder will contain JPEG images. Each image will have a numbered file name to represent its value.
