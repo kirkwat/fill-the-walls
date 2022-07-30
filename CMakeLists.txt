@@ -2,8 +2,8 @@ cmake_minimum_required(VERSION 3.16)
 project(21s_pa01_watson)
 set(CMAKE_CXX_STANDARD 17)
 
-set(CIMG_Path ${PROJECT_SOURCE_DIR} CImg.h) # Set your CIMG_Path to where you extracted CIMG
-add_executable(${PROJECT_NAME} main.cpp WallFiller.cpp WallFiller.h Stats.cpp Stats.h FillerAlgos.cpp FillerAlgos.h Image.cpp Image.h)
+set(CIMG_Path ${PROJECT_SOURCE_DIR} src/CImg.h) # Set your CIMG_Path to where you extracted CIMG
+add_executable(${PROJECT_NAME} src/main.cpp src/WallFiller.cpp src/WallFiller.h src/Stats.cpp src/Stats.h src/FillerAlgos.cpp src/FillerAlgos.h src/Image.cpp src/Image.h)
 # ADDING COOL IMAGE
 target_include_directories(${PROJECT_NAME} PRIVATE ${CIMG_Path})
 # ADDING THREADS fixes pthread_lock

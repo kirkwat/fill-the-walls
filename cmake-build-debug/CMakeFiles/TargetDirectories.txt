@@ -1,3 +1,0 @@
-/mnt/c/wsl$/Ubuntu/home/kirkwatson/code/21s-pa01-watson/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/mnt/c/wsl$/Ubuntu/home/kirkwatson/code/21s-pa01-watson/cmake-build-debug/CMakeFiles/edit_cache.dir
-/mnt/c/wsl$/Ubuntu/home/kirkwatson/code/21s-pa01-watson/cmake-build-debug/CMakeFiles/21s_pa01_watson.dir

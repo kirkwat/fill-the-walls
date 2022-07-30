@@ -16,18 +16,16 @@ In addition, a final stats file will be created with information on each of the 
 This data includes total wall value, wall space that is not used, and total profit for the given algorithm.
 
 ## How to Use
-To use this program, the user will need to provide some command-line arguments and an image folder.
-
-### There are 5 command-line arguments:
+To use this program, compiled and build with CMAKE. There are 5 command-line arguments.
 * Directory name of images
 * Wall 1 width
 * Wall 1 height
 * Wall 2 width
 * Wall 2 height
 
-Here is an example:
-
-`./placementImages/set1/ 10000 4000 12000 4000`
-
 ### Image folder
 This folder will contain JPEG images. Each image will have a numbered file name to represent its value.
+
+Here is an example:
+
+`../input/set1/ 10000 4000 12000 4000`
