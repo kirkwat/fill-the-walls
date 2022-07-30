@@ -16,7 +16,7 @@ In addition, a final stats file will be created with information on each of the 
 This data includes total wall value, wall space that is not used, and total profit for the given algorithm.
 
 ## How to Use
-To use this program, compiled and build with CMAKE. There are 5 command-line arguments.
+To use this program, compile and build with CMAKE. There are 5 command-line arguments.
 * Directory name of images
 * Wall 1 width
 * Wall 1 height
